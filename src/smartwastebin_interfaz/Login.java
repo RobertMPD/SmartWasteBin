@@ -105,6 +105,11 @@ public class Login extends javax.swing.JFrame {
 
         text_nameLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         text_nameLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        text_nameLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_nameLoginActionPerformed(evt);
+            }
+        });
         rightPanel.add(text_nameLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 250, 35));
 
         passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -154,7 +159,7 @@ public class Login extends javax.swing.JFrame {
                 btn_RegistroActionPerformed(evt);
             }
         });
-        rightPanel.add(btn_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, 30));
+        rightPanel.add(btn_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, 30));
 
         getContentPane().add(rightPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 350, 400));
 
