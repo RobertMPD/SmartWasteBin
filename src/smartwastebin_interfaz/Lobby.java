@@ -201,19 +201,19 @@ public class Lobby extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void bt_registerActionPerformed(java.awt.event.ActionEvent evt) {                                           
         Login login = new Login();
         login.setVisible(true);
         this.dispose();
     }
 
-    private void btnRecycleActionPerformed(java.awt.event.ActionEvent evt) {
+    private void bt_RecycleActionPerformed(java.awt.event.ActionEvent evt) {
         LobbyProductos lobbyProductos = new LobbyProductos();
         lobbyProductos.setVisible(true);
         this.dispose();
     }
 
-    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {
+    private void bt_AdminActionPerformed(java.awt.event.ActionEvent evt) {
         RegistroYAdministracion admin = new RegistroYAdministracion();
         admin.setVisible(true);
         this.dispose();
