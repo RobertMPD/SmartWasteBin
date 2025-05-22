@@ -15,6 +15,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
      */
     public AplicarLimpieza() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -35,10 +36,10 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         cmbArea = new javax.swing.JComboBox<>();
         btnLimpiar = new javax.swing.JButton();
         btn_volver = new javax.swing.JButton();
-        txtProceso = new javax.swing.JTextField();
+        txtLimpieza = new javax.swing.JTextField();
         btn_volver1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Descripcion = new javax.swing.JTextArea();
         lblDescripcion1 = new javax.swing.JLabel();
         Plastics = new java.awt.Checkbox();
         Papers = new java.awt.Checkbox();
@@ -89,7 +90,8 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         lblArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblArea.setText("Area de Limpieza:");
 
-        cmbArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un área", "Limpieza Profunda", "Limpieza Exterior", "Limpieza Personalizada" }));
+        cmbArea.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cmbArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un area", "Limpieza Profunda", "Limpieza Exterior", "Limpieza Personalizada" }));
 
         btnLimpiar.setBackground(new java.awt.Color(108, 99, 255));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -104,17 +106,15 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         btn_volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LobbyProductos lobby = new LobbyProductos();
-                lobby.setVisible(true);
-                dispose(); // Cierra la ventana actual
+                btn_volverActionPerformed(evt);
             }
         });
 
-        txtProceso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtProceso.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(108, 99, 255)));
-        txtProceso.addActionListener(new java.awt.event.ActionListener() {
+        txtLimpieza.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtLimpieza.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(108, 99, 255)));
+        txtLimpieza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProcesoActionPerformed(evt);
+                txtLimpiezaActionPerformed(evt);
             }
         });
 
@@ -124,9 +124,9 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         btn_volver1.setText("Enviar");
         btn_volver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Descripcion.setColumns(20);
+        Descripcion.setRows(5);
+        jScrollPane1.setViewportView(Descripcion);
 
         lblDescripcion1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDescripcion1.setText("Tipo de producto:");
@@ -216,7 +216,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
                                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
                                 .addGap(56, 56, 56))
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(txtProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_volver1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
                                 .addGap(42, 42, 42)))
@@ -248,7 +248,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
                     .addComponent(lblArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_volver1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
                     .addComponent(cmbArea, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.DEFAULT_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
@@ -302,12 +302,14 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcesoActionPerformed
+    private void txtLimpiezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimpiezaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtProcesoActionPerformed
+    }//GEN-LAST:event_txtLimpiezaActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         // TODO add your handling code here:
+        new LobbyProductos().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
     /**
@@ -346,6 +348,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Descripcion;
     private java.awt.Checkbox Gadgets;
     private java.awt.Checkbox Organics;
     private java.awt.Checkbox Papers;
@@ -363,12 +366,11 @@ public class AplicarLimpieza extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblArea;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblDescripcion1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JTextField txtProceso;
+    private javax.swing.JTextField txtLimpieza;
     // End of variables declaration//GEN-END:variables
 }

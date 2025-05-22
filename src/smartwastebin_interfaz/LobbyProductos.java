@@ -15,6 +15,7 @@ public class LobbyProductos extends javax.swing.JFrame {
      */
     public LobbyProductos() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -36,7 +37,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         elpepe1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btn_registrarproducto = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_VerProductos = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,13 +53,6 @@ public class LobbyProductos extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton5.setText("APLICAR LIMPIEZA");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AplicarLimpieza limpieza = new AplicarLimpieza();
-                limpieza.setVisible(true);
-                dispose(); // Cierra la ventana actual
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -149,10 +143,10 @@ public class LobbyProductos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(108, 99, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("VER PRODUCTOS");
+        btn_VerProductos.setBackground(new java.awt.Color(108, 99, 255));
+        btn_VerProductos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_VerProductos.setForeground(new java.awt.Color(255, 255, 255));
+        btn_VerProductos.setText("VER PRODUCTOS");
 
         jButton3.setBackground(new java.awt.Color(108, 99, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -176,7 +170,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(jButton2)))
+                        .addComponent(btn_VerProductos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -191,7 +185,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(btn_registrarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_VerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))
@@ -269,10 +263,10 @@ public class LobbyProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_VerProductos;
     private javax.swing.JButton btn_proceso;
     private javax.swing.JButton btn_registrarproducto;
     private javax.swing.JButton elpepe1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

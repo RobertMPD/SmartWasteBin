@@ -20,6 +20,7 @@ public class AplicarProceso extends javax.swing.JFrame {
 
     public AplicarProceso() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
