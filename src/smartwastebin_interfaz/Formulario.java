@@ -4,6 +4,8 @@
  */
 package smartwastebin_interfaz;
 
+import javax.swing.JOptionPane;
+import smartwastebin_datos.Datos;
 /**
  *
  * @author Diego Mejia
@@ -83,6 +85,23 @@ public class Formulario extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("REGISTRAR FORMULARIO");
+<<<<<<< Updated upstream
+=======
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btn_Volver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Volver.setText("Come Back");
+        btn_Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VolverActionPerformed(evt);
+            }
+        });
+>>>>>>> Stashed changes
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,6 +189,44 @@ public class Formulario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ContraseñaFormActionPerformed
 
+<<<<<<< Updated upstream
+=======
+    private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VolverActionPerformed
+        // TODO add your handling code here:
+            new LobbyProductos().setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_btn_VolverActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                                           
+   Datos datos = new Datos();
+    
+    // Asignar valores desde los campos
+    datos.setId(IdForm.getText());
+    datos.setNombre(NombreForm.getText());
+    datos.setCedula(CedulaForm.getText());
+    
+    try {
+        datos.setEdad(Integer.parseInt(EdadForm.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Edad debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Mostrar confirmación
+    JOptionPane.showMessageDialog(this, 
+        "Datos guardados:\n" + 
+        "ID: " + datosFormulario.getId() + "\n" +
+        "Nombre: " + datosFormulario.getNombre() + "\n" +
+        "Cédula: " + datosFormulario.getCedula() + "\n" +
+        "Edad: " + datosFormulario.getEdad());
+}
+
+
+   
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
@@ -186,15 +243,7 @@ public class Formulario extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
         //</editor-fold>
         //</editor-fold>
 
