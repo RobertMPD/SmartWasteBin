@@ -9,7 +9,6 @@ import smartwastebin_interfaz.model.UserManager;
 import javax.swing.*;
 /**
  *
- * @author JAVIER Y KLEVER
  */
 public class RegistroYAdministracion extends javax.swing.JFrame {
     UserManager objectoParaListUsers = new UserManager();

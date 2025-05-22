@@ -51,7 +51,6 @@ public class Login extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
         noAccountLabel = new javax.swing.JLabel();
         btn_singup = new javax.swing.JButton();
-        btn_Registro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 400));
@@ -135,7 +134,7 @@ public class Login extends javax.swing.JFrame {
 
         noAccountLabel.setForeground(new java.awt.Color(255, 255, 255));
         noAccountLabel.setText("I have no account");
-        rightPanel.add(noAccountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        rightPanel.add(noAccountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
         btn_singup.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_singup.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,16 +149,7 @@ public class Login extends javax.swing.JFrame {
                 btn_singupActionPerformed(evt);
             }
         });
-        rightPanel.add(btn_singup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
-
-        btn_Registro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_Registro.setText("Registrarse");
-        btn_Registro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RegistroActionPerformed(evt);
-            }
-        });
-        rightPanel.add(btn_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, 30));
+        rightPanel.add(btn_singup, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
 
         getContentPane().add(rightPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 350, 400));
 
@@ -192,14 +182,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_singupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_singupActionPerformed
-        new LobbyProductos().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_singupActionPerformed
-
-    private void btn_RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistroActionPerformed
         new Register().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btn_RegistroActionPerformed
+    }//GEN-LAST:event_btn_singupActionPerformed
 
     private void btn_comeBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comeBackActionPerformed
         new Lobby().setVisible(true);
@@ -243,7 +228,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Registro;
     private javax.swing.JButton btn_comeBack;
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_singup;
