@@ -35,7 +35,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         btn_proceso = new javax.swing.JButton();
         elpepe1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_registrarproducto = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -132,10 +132,15 @@ public class LobbyProductos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("LOBBY");
 
-        jButton1.setBackground(new java.awt.Color(108, 99, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("REGISTRAR PRODUCTOS");
+        btn_registrarproducto.setBackground(new java.awt.Color(108, 99, 255));
+        btn_registrarproducto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_registrarproducto.setForeground(new java.awt.Color(255, 255, 255));
+        btn_registrarproducto.setText("REGISTRAR PRODUCTOS");
+        btn_registrarproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarproductoActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(108, 99, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -160,7 +165,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(29, 29, 29))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_registrarproducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
@@ -177,7 +182,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_registrarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
@@ -209,6 +214,11 @@ public class LobbyProductos extends javax.swing.JFrame {
         new AplicarProceso().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_procesoActionPerformed
+
+    private void btn_registrarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarproductoActionPerformed
+     new RegistroDeProductos().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_registrarproductoActionPerformed
 
     private void elpepe1ActionPerformed(java.awt.event.ActionEvent evt) {
         Lobby lobby = new Lobby();
@@ -253,8 +263,8 @@ public class LobbyProductos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_proceso;
+    private javax.swing.JButton btn_registrarproducto;
     private javax.swing.JButton elpepe1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
