@@ -52,6 +52,13 @@ public class LobbyProductos extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton5.setText("APLICAR LIMPIEZA");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AplicarLimpieza limpieza = new AplicarLimpieza();
+                limpieza.setVisible(true);
+                dispose(); // Cierra la ventana actual
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
