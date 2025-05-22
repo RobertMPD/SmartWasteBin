@@ -5,7 +5,9 @@
 package smartwastebin_interfaz.model;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -19,6 +21,7 @@ public class RegistroProducto {
     private String tipo;
     private String descripcion;
     private boolean reciclable;
+    private String fechaRegistro; // Nuevo atributo para la fecha de registro
 
     // Lista estática para almacenar todos los productos
     private static ArrayList<RegistroProducto> productos = new ArrayList<>();
@@ -27,13 +30,14 @@ public class RegistroProducto {
     public RegistroProducto() {
     }
 
-    // Constructor con parámetros modificado para generar ID automáticamente
+    // Constructor con parámetros modificado para generar ID automáticamente e incluir fecha
     public RegistroProducto(String idUsuario, String nombre, String tipo, String descripcion, boolean reciclable) {
         this.id = generarIdProducto(idUsuario, tipo);
         this.nombre = nombre;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.reciclable = reciclable;
+        this.fechaRegistro = generarFechaActual(); // Asignar la fecha actual
     }
 
     // Método para generar ID de producto basado en ID de usuario y tipo de residuo
@@ -42,6 +46,12 @@ public class RegistroProducto {
         long timestamp = System.currentTimeMillis();
         // Crear un ID combinando el ID de usuario, tipo de residuo y timestamp
         return idUsuario + "-" + tipo.substring(0, Math.min(3, tipo.length())).toUpperCase() + "-" + timestamp % 10000;
+    }
+    
+    // Método para generar la fecha actual en formato legible
+    private String generarFechaActual() {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return formatoFecha.format(new Date());
     }
 
     // Getters y Setters
@@ -83,6 +93,15 @@ public class RegistroProducto {
 
     public void setReciclable(boolean reciclable) {
         this.reciclable = reciclable;
+    }
+
+    // Getter y Setter para la fecha de registro
+    public String getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
     // Métodos para gestionar la lista de productos
@@ -147,14 +166,15 @@ public class RegistroProducto {
     // Guardar productos en archivo CSV
     private static void guardarProductosEnArchivo() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("productos.csv"))) {
-            writer.println("id,nombre,tipo,descripcion,reciclable");
+            writer.println("id,nombre,tipo,descripcion,reciclable,fechaRegistro");
             for (RegistroProducto producto : productos) {
-                writer.printf("%s,%s,%s,%s,%b%n",
+                writer.printf("%s,%s,%s,%s,%b,%s%n",
                         producto.getId(),
                         producto.getNombre(),
                         producto.getTipo(),
                         producto.getDescripcion(),
-                        producto.isReciclable());
+                        producto.isReciclable(),
+                        producto.getFechaRegistro());
             }
             System.out.println("Productos guardados como CSV.");
         } catch (IOException e) {
@@ -169,13 +189,23 @@ public class RegistroProducto {
             productos = new ArrayList<>();
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(",");
-                if (fields.length >= 5) {
-                    productos.add(new RegistroProducto(
+                if (fields.length >= 6) { // Ahora esperamos 6 campos con la fecha
+                    RegistroProducto producto = new RegistroProducto(
+                            fields[0], // Usamos el ID como está en el archivo
+                            fields[1],
+                            fields[2],
+                            fields[3],
+                            Boolean.parseBoolean(fields[4]));
+                    producto.setFechaRegistro(fields[5]); // Establecer la fecha desde el archivo
+                    productos.add(producto);
+                } else if (fields.length >= 5) { // Compatibilidad con registros antiguos sin fecha
+                    RegistroProducto producto = new RegistroProducto(
                             fields[0],
                             fields[1],
                             fields[2],
                             fields[3],
-                            Boolean.parseBoolean(fields[4])));
+                            Boolean.parseBoolean(fields[4]));
+                    productos.add(producto);
                 }
             }
             System.out.println("Productos cargados desde CSV.");
@@ -195,6 +225,7 @@ public class RegistroProducto {
                 ", tipo='" + tipo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", reciclable=" + reciclable +
+                ", fechaRegistro='" + fechaRegistro + '\'' +
                 '}';
     }
 }

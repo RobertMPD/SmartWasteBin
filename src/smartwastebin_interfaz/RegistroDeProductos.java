@@ -4,24 +4,124 @@
  */
 package smartwastebin_interfaz;
 
+import smartwastebin_interfaz.model.User;
+import smartwastebin_interfaz.model.UserManager;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jundy071809
  */
 public class RegistroDeProductos extends javax.swing.JFrame {
 
+    private UserManager userManager;
+    private User currentUser;
+
     /**
      * Creates new form RegistroDeProductos
      */
     public RegistroDeProductos() {
         initComponents();
-        //Aqui puedes predeterminar el tamaño de una ventana
-        // Establecer el tamaño predeterminado
-        this.setSize(615, 445);
-        // Evitar que el usuario cambie el tamaño
-        this.setResizable(false);
-        //posicionar siempre en el medio
-        setLocationRelativeTo(null);
+        userManager = new UserManager();
+
+        // Configurar el ActionListener para el botón Enviar
+        btn_volver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_enviarActionPerformed(evt);
+            }
+        });
+
+        // Configurar el ActionListener para el campo de texto ID
+        txtProceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProcesoActionPerformed(evt);
+            }
+        });
+    }
+
+    // Método para buscar usuario por ID
+    private void buscarUsuarioPorId() {
+        String userId = txtProceso.getText().trim();
+        if (!userId.isEmpty()) {
+            currentUser = userManager.getUserById(userId);
+            if (currentUser != null) {
+                // Si se encuentra el usuario, mostrar un mensaje de éxito
+                JOptionPane.showMessageDialog(this,
+                        "Usuario encontrado: " + currentUser.getName() + " " + currentUser.getLastName(),
+                        "Usuario Encontrado",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Si no se encuentra el usuario, mostrar un mensaje de error
+                JOptionPane.showMessageDialog(this,
+                        "No se encontró ningún usuario con el ID: " + userId,
+                        "Usuario No Encontrado",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Por favor, ingrese un ID de usuario",
+                    "Campo Vacío",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    // Método para mostrar el recibo con los datos del usuario y productos
+    // seleccionados
+    private void mostrarRecibo() {
+        if (currentUser == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Primero debe buscar un usuario válido",
+                    "Usuario No Seleccionado",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Obtener los tipos de productos seleccionados
+        StringBuilder tiposSeleccionados = new StringBuilder();
+        if (Gadgets1.getState())
+            tiposSeleccionados.append("Gadgets, ");
+        if (Plastics1.getState())
+            tiposSeleccionados.append("Plastics, ");
+        if (Papers1.getState())
+            tiposSeleccionados.append("Papers, ");
+        if (Organics1.getState())
+            tiposSeleccionados.append("Organics, ");
+
+        // Eliminar la última coma si hay tipos seleccionados
+        String tipos = tiposSeleccionados.toString();
+        if (tipos.endsWith(", ")) {
+            tipos = tipos.substring(0, tipos.length() - 2);
+        }
+
+        if (tipos.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Por favor, seleccione al menos un tipo de producto",
+                    "Ningún Tipo Seleccionado",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Crear el mensaje del recibo
+        String recibo = "RECIBO DE REGISTRO DE PRODUCTOS\n\n" +
+                "ID de Usuario: " + currentUser.getIdUser() + "\n" +
+                "Nombre: " + currentUser.getName() + " " + currentUser.getLastName() + "\n" +
+                "Tipos de Productos: " + tipos + "\n" +
+                "Fecha: "
+                + java.time.LocalDateTime.now()
+                        .format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
+                + "\n\n" +
+                "¡Gracias por utilizar Smart Waste Bin!";
+
+        // Mostrar el recibo en una ventana emergente
+        JOptionPane.showMessageDialog(this,
+                recibo,
+                "Recibo de Registro",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // Manejador de eventos para el botón Enviar
+    private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {
+        mostrarRecibo();
     }
 
     /**
@@ -30,12 +130,77 @@ public class RegistroDeProductos extends javax.swing.JFrame {
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        Gadgets = new java.awt.Checkbox();
+        Plastics = new java.awt.Checkbox();
+        Papers = new java.awt.Checkbox();
+        Organics = new java.awt.Checkbox();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Gadgets1 = new java.awt.Checkbox();
+        Plastics1 = new java.awt.Checkbox();
+        Papers1 = new java.awt.Checkbox();
+        Organics1 = new java.awt.Checkbox();
+        idLabel = new javax.swing.JLabel();
+        txtProceso = new javax.swing.JTextField();
+        btn_volver1 = new javax.swing.JButton();
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel4.setBackground(new java.awt.Color(108, 99, 255));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Products Management");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addContainerGap(133, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(112, 112, 112)));
+        jPanel4Layout.setVerticalGroup(
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addContainerGap(22, Short.MAX_VALUE)));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                Short.MAX_VALUE));
+        jPanel3Layout.setVerticalGroup(
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(231, Short.MAX_VALUE)));
+
+        Gadgets.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Gadgets.setLabel("Gadgets");
+
+        Plastics.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Plastics.setLabel("Plastics");
+
+        Papers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Papers.setLabel("Papers");
+
+        Organics.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Organics.setLabel("Organics");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,55 +215,157 @@ public class RegistroDeProductos extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(112, 112, 112))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(112, 112, 112)));
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addContainerGap(22, Short.MAX_VALUE)));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Seleccione el tipo de productos:");
+
+        Gadgets1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Gadgets1.setLabel("Gadgets");
+
+        Plastics1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Plastics1.setLabel("Plastics");
+
+        Papers1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Papers1.setLabel("Papers");
+
+        Organics1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Organics1.setLabel("Organics");
+
+        idLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        idLabel.setText("Enter your ID");
+
+        txtProceso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtProceso.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(108, 99, 255)));
+        txtProceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProcesoActionPerformed(evt);
+            }
+        });
+
+        btn_volver1.setBackground(new java.awt.Color(108, 99, 255));
+        btn_volver1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_volver1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_volver1.setText("Enviar");
+        btn_volver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(Organics1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(Gadgets1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel3)
+                                                        .addComponent(Plastics1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(44, 44, 44)
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(idLabel)
+                                                        .addComponent(txtProceso,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 235,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addContainerGap())))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(220, 220, 220)
+                                .addComponent(btn_volver1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Papers1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)));
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 231, Short.MAX_VALUE))
-        );
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(Gadgets1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(Plastics1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(Papers1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(idLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Organics1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(btn_volver1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
+                                .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtProcesoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtProcesoActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_txtProcesoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -108,15 +375,19 @@ public class RegistroDeProductos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDeProductos.class.getName()).log(java.util.logging.Level.SEVERE,
+                    null, ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -128,8 +399,23 @@ public class RegistroDeProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Checkbox Gadgets;
+    private java.awt.Checkbox Gadgets1;
+    private java.awt.Checkbox Organics;
+    private java.awt.Checkbox Organics1;
+    private java.awt.Checkbox Papers;
+    private java.awt.Checkbox Papers1;
+    private java.awt.Checkbox Plastics;
+    private java.awt.Checkbox Plastics1;
+    private javax.swing.JButton btn_volver1;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField txtProceso;
     // End of variables declaration//GEN-END:variables
 }

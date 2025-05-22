@@ -143,4 +143,20 @@ public class UserManager {//Inicio class
     return false;
 } // Fin delete
 
+
+
+
+/**
+ * Busca un usuario por su ID
+ * @param idUser ID del usuario a buscar
+ * @return El usuario encontrado o null si no existe
+ */
+public User getUserById(String idUser) {
+    for (User user : users) {
+        if (user.getIdUser().equals(idUser)) {
+            return user;
+        }
+    }
+    return null;
 }//Fin class
+}
