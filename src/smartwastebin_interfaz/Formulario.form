@@ -186,6 +186,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="NombreForm">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NombreFormActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Contrase&#xf1;aForm">
           <Events>
@@ -193,10 +196,19 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="IdForm">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IdFormActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CedulaForm">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CedulaFormActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="EdadForm">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EdadFormActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>

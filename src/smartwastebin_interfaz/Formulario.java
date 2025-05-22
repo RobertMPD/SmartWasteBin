@@ -77,31 +77,43 @@ public class Formulario extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
+        NombreForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreFormActionPerformed(evt);
+            }
+        });
+
         ContraseñaForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaFormActionPerformed(evt);
             }
         });
 
+        IdForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdFormActionPerformed(evt);
+            }
+        });
+
+        CedulaForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CedulaFormActionPerformed(evt);
+            }
+        });
+
+        EdadForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EdadFormActionPerformed(evt);
+            }
+        });
+
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("REGISTRAR FORMULARIO");
-<<<<<<< Updated upstream
-=======
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        btn_Volver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_Volver.setText("Come Back");
-        btn_Volver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_VolverActionPerformed(evt);
-            }
-        });
->>>>>>> Stashed changes
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -185,48 +197,115 @@ public class Formulario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ContraseñaFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaFormActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContraseñaFormActionPerformed
-
-<<<<<<< Updated upstream
-=======
-    private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VolverActionPerformed
-        // TODO add your handling code here:
-            new LobbyProductos().setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_btn_VolverActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                                           
-   Datos datos = new Datos();
-    
-    // Asignar valores desde los campos
-    datos.setId(IdForm.getText());
-    datos.setNombre(NombreForm.getText());
-    datos.setCedula(CedulaForm.getText());
-    
-    try {
-        datos.setEdad(Integer.parseInt(EdadForm.getText()));
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Edad debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
+    private void ContraseñaFormActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        // Validar que la contraseña tenga al menos 6 caracteres
+        if (ContraseñaForm.getText().length() < 6) {
+            JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 6 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
-    // Mostrar confirmación
-    JOptionPane.showMessageDialog(this, 
-        "Datos guardados:\n" + 
-        "ID: " + datosFormulario.getId() + "\n" +
-        "Nombre: " + datosFormulario.getNombre() + "\n" +
-        "Cédula: " + datosFormulario.getCedula() + "\n" +
-        "Edad: " + datosFormulario.getEdad());
-}
+    private void NombreFormActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // Validar que el nombre no esté vacío y solo contenga letras
+        String nombre = NombreForm.getText().trim();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre no puede estar vacío", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (!nombre.matches("[a-zA-Z ]+")) {
+            JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void IdFormActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // Validar que el ID tenga un formato válido
+        String id = IdForm.getText().trim();
+        if (id.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El ID no puede estar vacío", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (!id.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El ID debe contener solo números", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void CedulaFormActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // Validar que la cédula tenga al menos 6 dígitos y solo contenga números
+        String cedula = CedulaForm.getText().trim();
+        if (cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La cédula no puede estar vacía", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (!cedula.matches("\\d{6,}")) {
+            JOptionPane.showMessageDialog(this, "La cédula debe tener al menos 6 dígitos numéricos", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void EdadFormActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // Validar que la edad sea un número válido entre 1 y 120
+        try {
+            String edadStr = EdadForm.getText().trim();
+            if (edadStr.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La edad no puede estar vacía", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            int edad = Integer.parseInt(edadStr);
+            if (edad < 1 || edad > 120) {
+                JOptionPane.showMessageDialog(this, "La edad debe estar entre 1 y 120 años", "Error", JOptionPane.WARNING_MESSAGE);
+                EdadForm.setText("");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser un número válido", "Error", JOptionPane.WARNING_MESSAGE);
+            EdadForm.setText("");
+        }
+    }
+
+    private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        new LobbyProductos().setVisible(true);
+        this.dispose();
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        Datos datos = new Datos();
+        
+        // Asignar valores desde los campos
+        datos.setId(IdForm.getText());
+        datos.setNombre(NombreForm.getText());
+        datos.setCedula(CedulaForm.getText());
+        datos.setContraseña(ContraseñaForm.getText());
+        
+        try {
+            datos.setEdad(Integer.parseInt(EdadForm.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser un número válido", 
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar todos los datos usando el método de la clase Datos
+        if (!datos.validarDatos()) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor verifique los siguientes requisitos:\n" +
+                "- El nombre no puede estar vacío\n" +
+                "- La cédula debe tener al menos 6 dígitos\n" +
+                "- La edad debe estar entre 1 y 120 años\n" +
+                "- La contraseña no puede estar vacía", 
+                "Datos Inválidos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Mostrar factura de registro
+        JOptionPane.showMessageDialog(this, 
+            datos.generarFactura(),
+            "Registro Exitoso", 
+            JOptionPane.INFORMATION_MESSAGE);
+
+        // Limpiar los campos después de guardar
+        NombreForm.setText("");
+        ContraseñaForm.setText("");
+        IdForm.setText("");
+        CedulaForm.setText("");
+        EdadForm.setText("");
+        
+        // Regresar al lobby después del registro exitoso
+        new LobbyProductos().setVisible(true);
+        this.dispose();
+    }
 
 
-   
-    }//GEN-LAST:event_jButton1ActionPerformed
-
->>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
@@ -243,7 +322,9 @@ public class Formulario extends javax.swing.JFrame {
                     break;
                 }
             }
-        
+        } catch (Exception e) {
+            // Handle exception
+        }
         //</editor-fold>
         //</editor-fold>
 
