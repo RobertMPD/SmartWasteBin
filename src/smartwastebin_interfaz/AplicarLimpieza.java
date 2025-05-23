@@ -33,7 +33,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         lblDescripcion = new javax.swing.JLabel();
         lblArea = new javax.swing.JLabel();
-        cmbArea = new javax.swing.JComboBox<>();
+        cmbArea = new javax.swing.JComboBox<String>();
         btnLimpiar = new javax.swing.JButton();
         btn_volver = new javax.swing.JButton();
         txtLimpieza = new javax.swing.JTextField();
@@ -82,22 +82,32 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         );
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTitle.setText("Ingrese el ID del producto a limpiar:\n");
+        lblTitle.setText("Enter the ID of the product to be cleaned:");
 
         lblDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDescripcion.setText("Descripción:");
+        lblDescripcion.setText("Description:");
 
         lblArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblArea.setText("Area de Limpieza:");
+        lblArea.setText("Cleaning Area:");
 
         cmbArea.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cmbArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un area", "Limpieza Profunda", "Limpieza Exterior", "Limpieza Personalizada" }));
+        cmbArea.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Select an area", "Deep Cleaning", "Exterior Cleaning", "Custom Cleaning" }));
+        cmbArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAreaActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(108, 99, 255));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setText("Clean");
         btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btn_volver.setBackground(new java.awt.Color(108, 99, 255));
         btn_volver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -121,7 +131,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         btn_volver1.setBackground(new java.awt.Color(108, 99, 255));
         btn_volver1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_volver1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_volver1.setText("Enviar");
+        btn_volver1.setText("Send");
         btn_volver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         Descripcion.setColumns(20);
@@ -129,7 +139,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Descripcion);
 
         lblDescripcion1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDescripcion1.setText("Tipo de producto:");
+        lblDescripcion1.setText("Product type");
 
         Plastics.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Plastics.setLabel("Plastics");
@@ -146,20 +156,20 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(102, 255, 51));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 255, 51));
-        jLabel2.setText("Selecciona el area dependiendo del proposito:");
+        jLabel2.setText("Select the area depending on the purpose:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(108, 99, 255));
-        jLabel4.setText("Limpieza Profunda: Para plasticos y organicos");
+        jLabel4.setText("Deep Cleaning: For plastics and organics");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(108, 99, 255));
-        jLabel6.setText("Limpieza Exterior: Para gadgets, plasticos y organicos");
+        jLabel6.setText("Exterior Cleaning: For gadgets, plastics and organic materials");
 
         jLabel7.setBackground(new java.awt.Color(108, 99, 255));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(108, 99, 255));
-        jLabel7.setText("Limpieza personalizada: Gadgets y papers");
+        jLabel7.setText("Custom Cleaning: Gadgets and Papers");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -188,55 +198,42 @@ public class AplicarLimpieza extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)))
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addGap(271, 271, 271)
-                                        .addComponent(jLabel3))
-                                    .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addGap(194, 194, 194)
-                                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel6))))
-                                .addGap(428, 428, 428))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(365, 365, 365))))
+                                .addGap(365, 365, 365))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(271, 271, 271)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel7))
+                                .addGap(351, 351, 351))))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
-                        .addContainerGap())
-                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
-                                .addGap(56, 56, 56))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(txtLimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_volver1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
-                                .addGap(42, 42, 42)))
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(lblArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
-                                .addGap(251, 251, 251))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(mainPanelLayout.createSequentialGroup()
+                                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
+                                        .addGap(56, 56, 56))
+                                    .addGroup(mainPanelLayout.createSequentialGroup()
+                                        .addComponent(txtLimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btn_volver1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
+                                        .addGap(42, 42, 42)))
                                 .addGap(58, 58, 58)
                                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbArea, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addGap(393, 393, 393))))))
+                                    .addComponent(jLabel5)
+                                    .addComponent(lblArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))))
+                        .addContainerGap())))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,16 +265,17 @@ public class AplicarLimpieza extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Papers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(8, 8, 8)
                         .addComponent(jLabel2)
-                        .addGap(34, 34, 34)
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel4)
-                        .addGap(30, 30, 30)
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Organics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
@@ -311,6 +309,14 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         new LobbyProductos().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void cmbAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAreaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbAreaActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
