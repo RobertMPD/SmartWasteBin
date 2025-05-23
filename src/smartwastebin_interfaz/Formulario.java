@@ -52,42 +52,42 @@ public class Formulario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Name:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("ID:");
+        jLabel2.setText("IUD:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Contraseña:");
+        jLabel3.setText("Password:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("Cedula:");
+        jLabel4.setText("ID:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Edad:");
+        jLabel5.setText("Age:");
 
         jPanel2.setBackground(new java.awt.Color(108, 99, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("FORMULARIO");
+        jLabel6.setText("FORM");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(247, 247, 247)
+                .addGap(303, 303, 303)
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addComponent(jLabel6)
-                .addGap(27, 27, 27))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         NombreForm.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(108, 99, 255)));
@@ -108,7 +108,7 @@ public class Formulario extends javax.swing.JFrame {
         btn_Form.setBackground(new java.awt.Color(108, 99, 255));
         btn_Form.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_Form.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Form.setText("REGISTRAR FORMULARIO");
+        btn_Form.setText("REGISTER FORM");
         btn_Form.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Form.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,28 +132,29 @@ public class Formulario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(134, 134, 134)
-                        .addComponent(EdadForm))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(128, 128, 128)
+                            .addComponent(EdadForm, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(109, 109, 109)
+                            .addComponent(NombreForm, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))
+                            .addGap(74, 74, 74)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(IdForm)
+                                .addComponent(ContraseñaForm))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(116, 116, 116)
-                        .addComponent(CedulaForm))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(155, 155, 155)
-                        .addComponent(IdForm))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(74, 74, 74)
-                        .addComponent(ContraseñaForm))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(109, 109, 109)
-                        .addComponent(NombreForm, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(231, 256, Short.MAX_VALUE))
+                        .addGap(140, 140, 140)
+                        .addComponent(CedulaForm, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(239, 252, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -180,18 +181,19 @@ public class Formulario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(IdForm, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CedulaForm, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel5))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(EdadForm, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(EdadForm, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CedulaForm, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_Form, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Volver, javax.swing.GroupLayout.Alignment.TRAILING))
