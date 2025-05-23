@@ -4,12 +4,23 @@
  */
 package smartwastebin_interfaz;
 
+import java.util.List;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import java.awt.Dimension;
 /**
  *
  * @author Diego Mejia
  */
 public class LobbyProductos extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form LobbyProductos
      */
@@ -222,19 +233,50 @@ public class LobbyProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_procesoActionPerformed
 
     private void btn_registrarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarproductoActionPerformed
-     new RegistroDeProductos().setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        Formulario Formulario = new Formulario();
+        Formulario.setVisible(true);
+        this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarproductoActionPerformed
 
     private void btn_VerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_VerProductosActionPerformed
+            try {
+                // Leer ambos archivos CSV
+                List<String> users = Files.readAllLines(Paths.get("users.csv"));
+                List<String> products = Files.readAllLines(Paths.get("products.csv"));
+                
+                // Construir el texto a mostrar
+                StringBuilder sb = new StringBuilder();
+                sb.append("=== USUARIOS ===\n");
+                for (String line : users) {
+                    sb.append(line).append("\n");
+                }
+                sb.append("\n=== PRODUCTOS ===\n");
+                for (String line : products) {
+                    sb.append(line).append("\n");
+                }
+                
+                // Crear área de texto con scroll
+                JTextArea textArea = new JTextArea(sb.toString());
+                textArea.setEditable(false);
+                JScrollPane scrollPane = new JScrollPane(textArea);
+                scrollPane.setPreferredSize(new Dimension(500, 400));
+                
+                // Mostrar ventana emergente
+                JOptionPane.showMessageDialog(this, scrollPane, "Datos Registrados", JOptionPane.PLAIN_MESSAGE);
+                
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error al leer los archivos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }//GEN-LAST:event_btn_VerProductosActionPerformed
 
     private void elpepe1ActionPerformed(java.awt.event.ActionEvent evt) {
         Lobby lobby = new Lobby();
         lobby.setVisible(true);
         this.dispose();
     }
+
+
 
     /**
      * @param args the command line arguments

@@ -7,6 +7,10 @@ package smartwastebin_interfaz;
 import smartwastebin_interfaz.model.User;
 import smartwastebin_interfaz.model.UserManager;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -105,29 +109,27 @@ public class RegistroDeProductos extends javax.swing.JFrame {
 
     // Manejador de eventos para el botón Enviar
     private void guardarDatos() {
-        // Obtener fecha actual formateada
-        String fechaActual = java.time.LocalDateTime.now()
-                .format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-                
-        // Mostrar ID y fecha en consola
-        System.out.println("ID de registro: " + registroId);
-        System.out.println("Fecha: " + fechaActual);
-        
-        boolean gadgets = Gadgets1.getState();
-        boolean plastics = Plastics1.getState();
-        boolean papers = Papers1.getState();
-        boolean organics = Organics1.getState();
-        
-        String descripcion = Descripcion.getText();
-        String nombreEspecifico = txtNombreEspecifico.getText();
-        
-        System.out.println("Datos guardados:");
-        System.out.println("Gadgets: " + gadgets);
-        System.out.println("Plastics: " + plastics);
-        System.out.println("Papers: " + papers);
-        System.out.println("Organics: " + organics);
-        System.out.println("Descripcion: " + descripcion);
-        System.out.println("Nombre Especifico: " + nombreEspecifico);
+        try (java.io.FileWriter writer = new java.io.FileWriter("products.csv", true)) {
+            // Obtener fecha actual
+            String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            
+            // Construir lista de categorías seleccionadas
+            List<String> categorias = new ArrayList<>();
+            if (Gadgets1.getState()) categorias.add("Gadgets");
+            if (Plastics1.getState()) categorias.add("Plastics");
+            if (Papers1.getState()) categorias.add("Papers");
+            if (Organics1.getState()) categorias.add("Organics");
+            
+            // Escribir datos: fecha, nombre, categorías
+            writer.append(String.join(",", 
+                fecha,
+                txtNombreEspecifico.getText(),
+                String.join("|", categorias)
+            ));
+            writer.append("\n");
+        } catch (java.io.IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // Llamar este método desde el ActionListener del botón enviar
@@ -396,9 +398,33 @@ public class RegistroDeProductos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
-    private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
-        guardarDatos();
-        mostrarRecibo();
+    // Agregar método para establecer el valor de txtBuscarID
+    private String idEsperado; // Variable de clase para almacenar el ID a comparar
+    
+    public void setTxtBuscarID(String id) {
+        this.idEsperado = id.trim(); // Almacena el ID esperado
+        this.txtBuscarID.setText(id.trim());
+    }
+    
+    private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {
+        String idIngresado = txtBuscarID.getText().trim();
+        
+        if(idIngresado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un ID", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(!idIngresado.equals(idEsperado)) {
+            JOptionPane.showMessageDialog(this, "El ID no coincide", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            guardarDatos();
+            JOptionPane.showMessageDialog(this, "Datos guardados exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void txtProcesoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtProcesoActionPerformed

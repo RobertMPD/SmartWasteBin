@@ -5,6 +5,8 @@
 package smartwastebin_interfaz;
 
 import javax.swing.JOptionPane;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -108,6 +110,11 @@ public class Formulario extends javax.swing.JFrame {
         btn_Form.setForeground(new java.awt.Color(255, 255, 255));
         btn_Form.setText("REGISTRAR FORMULARIO");
         btn_Form.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Form.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_FormActionPerformed(evt);
+            }
+        });
 
         btn_Volver.setBackground(new java.awt.Color(108, 99, 255));
         btn_Volver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -218,6 +225,21 @@ public class Formulario extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_btn_VolverActionPerformed
 
+    private void btn_FormActionPerformed(java.awt.event.ActionEvent evt) {
+        if (!validateFields()) return;
+        if (!validarContraseña()) return;
+        if (!validarNumerico(IdForm.getText(), "ID")) return;
+        if (!validarNumerico(CedulaForm.getText(), "Cédula")) return;
+        if (!validarNumerico(EdadForm.getText(), "Edad")) return;
+        
+        guardarDatos();
+        // En el método donde se abre RegistroDeProductos (probablemente btn_FormActionPerformed)
+        RegistroDeProductos registro = new RegistroDeProductos();
+        registro.setTxtBuscarID(IdForm.getText()); // Pasar el valor del campo IdForm
+        registro.setVisible(true);
+        this.dispose();
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -319,11 +341,22 @@ private void validateAndSubmitForm() {
     if (!validarNumerico(IdForm.getText(), "ID")) return;
     if (!validarNumerico(CedulaForm.getText(), "Cédula")) return;
     if (!validarNumerico(EdadForm.getText(), "Edad")) return;
-    
-    // TODO: Add form submission logic here
+
 }
 
-
+    private void guardarDatos() {
+        try (java.io.FileWriter writer = new java.io.FileWriter("users.csv", true)) {
+            writer.append(String.join(",", 
+                NombreForm.getText(),
+                ContraseñaForm.getText(),
+                IdForm.getText(),
+                CedulaForm.getText(),
+                EdadForm.getText()));
+            writer.append("\n");
+        } catch (java.io.IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
 
 
