@@ -6,6 +6,9 @@ package smartwastebin_interfaz;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
 
 /**
  *
@@ -80,6 +83,11 @@ public class AplicarProceso extends javax.swing.JFrame {
                 txtProcesoActionPerformed(evt);
             }
         });
+        txtProceso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                buscarProducto(evt);
+            }
+        });
 
         btnProcesar.setBackground(new java.awt.Color(108, 99, 255));
         btnProcesar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -136,7 +144,6 @@ public class AplicarProceso extends javax.swing.JFrame {
         Destino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reparar", "Perdida Total" }));
         Destino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DestinoActionPerformed(evt);
             }
         });
 
@@ -231,6 +238,7 @@ public class AplicarProceso extends javax.swing.JFrame {
 
     private void txtProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcesoActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_txtProcesoActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
@@ -238,9 +246,29 @@ public class AplicarProceso extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
-    private void DestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DestinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DestinoActionPerformed
+    private void buscarProducto(java.awt.event.KeyEvent evt) {
+        String nombre = txtProceso.getText().trim();
+        if(nombre.isEmpty()) return;
+        
+        try {
+            File file = new File("products.csv");
+            Scanner scanner = new Scanner(file);
+            
+            while(scanner.hasNextLine()) {
+                String[] datos = scanner.nextLine().split(",");
+                if(datos.length >= 3 && datos[0].equalsIgnoreCase(nombre)) {
+                    // Autocompletar los campos
+                    Descripcion.setText(datos[1]);
+                    // Aquí puedes agregar lógica para seleccionar el checkbox correspondiente
+                    // basado en datos[2] (tipo de producto)
+                    break;
+                }
+            }
+            scanner.close();
+        } catch (Exception e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
 
     private void btnProcesarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // Validar que txtProceso tenga al menos 1 caracter
@@ -283,7 +311,7 @@ public class AplicarProceso extends javax.swing.JFrame {
         lobby.setVisible(true);
         this.dispose();
     }                                          
-                                               
+
 
     /**
      * @param args the command line arguments
@@ -335,3 +363,5 @@ public class AplicarProceso extends javax.swing.JFrame {
     private javax.swing.JTextField txtProceso;
     // End of variables declaration//GEN-END:variables
 }
+
+
