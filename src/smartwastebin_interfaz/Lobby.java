@@ -101,7 +101,7 @@ public class Lobby extends javax.swing.JFrame {
         bt_Admin.setBackground(new java.awt.Color(108, 99, 255));
         bt_Admin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bt_Admin.setForeground(new java.awt.Color(255, 255, 255));
-        bt_Admin.setText("ADMINISTRACION");
+        bt_Admin.setText("ADMINISTRATION");
         bt_Admin.setBorderPainted(false);
         bt_Admin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_Admin.setFocusPainted(false);

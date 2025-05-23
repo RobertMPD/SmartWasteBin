@@ -47,7 +47,7 @@ public class AplicarProceso extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
-        Destino = new javax.swing.JComboBox<>();
+        Destino = new javax.swing.JComboBox<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 400));
@@ -60,7 +60,7 @@ public class AplicarProceso extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Procesos");
+        lblTitle.setText("Processes");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -92,7 +92,7 @@ public class AplicarProceso extends javax.swing.JFrame {
         btnProcesar.setBackground(new java.awt.Color(108, 99, 255));
         btnProcesar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnProcesar.setForeground(new java.awt.Color(255, 255, 255));
-        btnProcesar.setText("Iniciar Proceso");
+        btnProcesar.setText("Start Process");
         btnProcesar.setBorderPainted(false);
         btnProcesar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProcesar.setFocusPainted(false);
@@ -119,16 +119,16 @@ public class AplicarProceso extends javax.swing.JFrame {
         Organics.setLabel("Organics");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Seleccione el tipo de productos:");
+        jLabel1.setText("Select the type of products:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Destino del producto:");
+        jLabel2.setText("Product destination:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Descripcion breve del producto:");
+        jLabel3.setText("Brief description of the product:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Nombre Especifico del producto:");
+        jLabel4.setText("Brief description of the product:");
 
         btn_volver.setBackground(new java.awt.Color(108, 99, 255));
         btn_volver.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -141,7 +141,7 @@ public class AplicarProceso extends javax.swing.JFrame {
         });
 
         Destino.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Destino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reparar", "Perdida Total" }));
+        Destino.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Repair", "Total Loss" }));
         Destino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             }
