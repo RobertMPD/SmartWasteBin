@@ -14,17 +14,22 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import java.awt.Dimension;
+import smartwastebin_interfaz.model.GestorProductos;
+
 /**
  *
  * @author Diego Mejia
  */
 public class LobbyProductos extends javax.swing.JFrame {
+    GestorProductos objetoParaListarProductos = new GestorProductos();
+
 
     
     /**
      * Creates new form LobbyProductos
      */
     public LobbyProductos() {
+        
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -41,7 +46,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btn_Limpieza = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btn_proceso = new javax.swing.JButton();
@@ -49,7 +54,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_registrarproducto = new javax.swing.JButton();
         btn_VerProductos = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_eliminarProducto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,8 +67,8 @@ public class LobbyProductos extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LIMPIEZA");
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton5.setText("APLICAR LIMPIEZA");
+        btn_Limpieza.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_Limpieza.setText("APLICAR LIMPIEZA");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -76,7 +81,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_Limpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -85,7 +90,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addGap(46, 46, 46)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Limpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -164,10 +169,15 @@ public class LobbyProductos extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(108, 99, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("ELIMINAR PRODUCTOS");
+        btn_eliminarProducto.setBackground(new java.awt.Color(108, 99, 255));
+        btn_eliminarProducto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_eliminarProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btn_eliminarProducto.setText("ELIMINAR PRODUCTOS");
+        btn_eliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarProductoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -183,7 +193,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(29, 29, 29))
                             .addComponent(btn_registrarproducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btn_eliminarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(btn_VerProductos)))
@@ -203,7 +213,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addComponent(btn_VerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_eliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -270,6 +280,25 @@ public class LobbyProductos extends javax.swing.JFrame {
             }
         }//GEN-LAST:event_btn_VerProductosActionPerformed
 
+    private void btn_eliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarProductoActionPerformed
+        // TODO add your handling code here:
+        
+        String idProducto = JOptionPane.showInputDialog(this, "Digite el ID del producto que desea eliminar."); 
+    if(idProducto == null || idProducto.isEmpty()){//Inicio If 
+        JOptionPane.showMessageDialog(this, "El ID no puede estar vacío"); 
+        return; 
+    }//Fin If 
+    
+    boolean delete = objetoParaListarProductos.deleteProducto(idProducto); 
+    
+    if(delete){ 
+        JOptionPane.showMessageDialog(this, "El producto se eliminó correctamente"); 
+    }else{ 
+        JOptionPane.showMessageDialog(this, "El producto no se encuentra en los datos"); 
+    } 
+
+    }//GEN-LAST:event_btn_eliminarProductoActionPerformed
+
     private void elpepe1ActionPerformed(java.awt.event.ActionEvent evt) {
         Lobby lobby = new Lobby();
         lobby.setVisible(true);
@@ -314,12 +343,12 @@ public class LobbyProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Limpieza;
     private javax.swing.JButton btn_VerProductos;
+    private javax.swing.JButton btn_eliminarProducto;
     private javax.swing.JButton btn_proceso;
     private javax.swing.JButton btn_registrarproducto;
     private javax.swing.JButton elpepe1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
