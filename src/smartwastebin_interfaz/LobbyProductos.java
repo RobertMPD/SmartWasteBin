@@ -64,10 +64,10 @@ public class LobbyProductos extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("LIMPIEZA");
+        jLabel3.setText("CLEANING");
 
         btn_Limpieza.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_Limpieza.setText("APLICAR LIMPIEZA");
+        btn_Limpieza.setText("APPLY CLEANING");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,10 +98,10 @@ public class LobbyProductos extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("PROCESOS");
+        jLabel2.setText("PROCESSES");
 
         btn_proceso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_proceso.setText("APLICAR PROCESO");
+        btn_proceso.setText("APPLY PROCESS");
         btn_proceso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_procesoActionPerformed(evt);
@@ -151,7 +151,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         btn_registrarproducto.setBackground(new java.awt.Color(108, 99, 255));
         btn_registrarproducto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_registrarproducto.setForeground(new java.awt.Color(255, 255, 255));
-        btn_registrarproducto.setText("REGISTRAR PRODUCTOS");
+        btn_registrarproducto.setText("REGISTER PRODUCTS");
         btn_registrarproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_registrarproductoActionPerformed(evt);
@@ -161,7 +161,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         btn_VerProductos.setBackground(new java.awt.Color(108, 99, 255));
         btn_VerProductos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_VerProductos.setForeground(new java.awt.Color(255, 255, 255));
-        btn_VerProductos.setText("VER PRODUCTOS");
+        btn_VerProductos.setText("SEE PRODUCTS");
         btn_VerProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_VerProductosActionPerformed(evt);
@@ -171,7 +171,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         btn_ElimProducto.setBackground(new java.awt.Color(108, 99, 255));
         btn_ElimProducto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_ElimProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btn_ElimProducto.setText("ELIMINAR PRODUCTOS");
+        btn_ElimProducto.setText("DELETE PRODUCTS");
         btn_ElimProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ElimProductoActionPerformed(evt);
@@ -190,13 +190,19 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(29, 29, 29))
-                            .addComponent(btn_registrarproducto, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_ElimProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_registrarproducto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(btn_VerProductos)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(94, 94, 94)
+                                .addComponent(btn_VerProductos))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(btn_ElimProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -211,9 +217,9 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addComponent(btn_registrarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(btn_VerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
+                        .addGap(53, 53, 53)
                         .addComponent(btn_ElimProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))
+                        .addGap(45, 45, 45))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
