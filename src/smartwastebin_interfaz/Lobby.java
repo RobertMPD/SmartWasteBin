@@ -37,7 +37,6 @@ public class Lobby extends javax.swing.JFrame {
         headerPanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         bt_register = new javax.swing.JButton();
-        bt_Recycle = new javax.swing.JButton();
         bt_Admin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -85,19 +84,6 @@ public class Lobby extends javax.swing.JFrame {
             }
         });
 
-        bt_Recycle.setBackground(new java.awt.Color(108, 99, 255));
-        bt_Recycle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bt_Recycle.setForeground(new java.awt.Color(255, 255, 255));
-        bt_Recycle.setText("Recycle");
-        bt_Recycle.setBorderPainted(false);
-        bt_Recycle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bt_Recycle.setFocusPainted(false);
-        bt_Recycle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_RecycleActionPerformed(evt);
-            }
-        });
-
         bt_Admin.setBackground(new java.awt.Color(108, 99, 255));
         bt_Admin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bt_Admin.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,8 +124,7 @@ public class Lobby extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bt_Admin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_Recycle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
@@ -163,27 +148,21 @@ public class Lobby extends javax.swing.JFrame {
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(bt_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(82, 82, 82)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGap(25, 25, 25)))
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(bt_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(bt_Recycle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                        .addGap(66, 66, 66)
+                        .addComponent(bt_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,11 +180,10 @@ public class Lobby extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_registerActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        Login login = new Login();
-        login.setVisible(true);
-        this.dispose();
-    }
+    private void bt_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_registerActionPerformed
+
 
     private void bt_RecycleActionPerformed(java.awt.event.ActionEvent evt) {
         LobbyProductos lobbyProductos = new LobbyProductos();
@@ -258,7 +236,6 @@ public class Lobby extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Admin;
-    private javax.swing.JButton bt_Recycle;
     private javax.swing.JButton bt_register;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;

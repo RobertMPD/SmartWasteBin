@@ -21,9 +21,16 @@ public class AplicarProceso extends javax.swing.JFrame {
     // private JPanel jPanel2;
     // private JLabel jLabel1;
 
+    private static AplicarProceso currentInstance;
+
     public AplicarProceso() {
         initComponents();
         setLocationRelativeTo(null);
+        currentInstance = this;
+    }
+
+    public static AplicarProceso getCurrentInstance() {
+        return currentInstance;
     }
 
     @SuppressWarnings("unchecked")
@@ -310,7 +317,12 @@ public class AplicarProceso extends javax.swing.JFrame {
         LobbyProductos lobby = new LobbyProductos();
         lobby.setVisible(true);
         this.dispose();
-    }                                          
+    }       
+    
+    public String getDestinoSeleccionado() {
+        return (String) Destino.getSelectedItem();
+    }
+    
 
 
     /**

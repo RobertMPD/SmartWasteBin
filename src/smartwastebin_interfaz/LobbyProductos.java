@@ -269,6 +269,14 @@ public class LobbyProductos extends javax.swing.JFrame {
 
 
     private void btn_VerProductosActionPerformed(java.awt.event.ActionEvent evt) {
+        // Obtener el valor de destino desde AplicarProceso
+        String destino = "";
+        if (AplicarProceso.getCurrentInstance() != null) {
+            destino = AplicarProceso.getCurrentInstance().getDestinoSeleccionado();
+        }
+        
+        // Mostrar en el listado
+        String texto = "Destino seleccionado: " + destino + "\n\n";
         try {
             // Leer archivos
             List<String> users = Files.readAllLines(Paths.get("users.csv"));
