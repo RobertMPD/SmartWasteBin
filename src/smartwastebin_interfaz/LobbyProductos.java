@@ -147,6 +147,11 @@ public class LobbyProductos extends javax.swing.JFrame {
         btn_VerProductos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_VerProductos.setForeground(new java.awt.Color(255, 255, 255));
         btn_VerProductos.setText("VER PRODUCTOS");
+        btn_VerProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VerProductosActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(108, 99, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -220,6 +225,10 @@ public class LobbyProductos extends javax.swing.JFrame {
      new RegistroDeProductos().setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarproductoActionPerformed
+
+    private void btn_VerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_VerProductosActionPerformed
 
     private void elpepe1ActionPerformed(java.awt.event.ActionEvent evt) {
         Lobby lobby = new Lobby();

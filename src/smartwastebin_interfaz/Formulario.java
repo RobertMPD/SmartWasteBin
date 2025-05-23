@@ -4,6 +4,8 @@
  */
 package smartwastebin_interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Diego Mejia
@@ -40,7 +42,7 @@ public class Formulario extends javax.swing.JFrame {
         IdForm = new javax.swing.JTextField();
         CedulaForm = new javax.swing.JTextField();
         EdadForm = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_Form = new javax.swing.JButton();
         btn_Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,26 +88,30 @@ public class Formulario extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        NombreForm.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 99, 255)));
+        NombreForm.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(108, 99, 255)));
 
-        ContraseñaForm.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 99, 255)));
+        ContraseñaForm.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(108, 99, 255)));
         ContraseñaForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaFormActionPerformed(evt);
             }
         });
 
-        IdForm.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 99, 255)));
+        IdForm.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(108, 99, 255)));
 
-        CedulaForm.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 99, 255)));
+        CedulaForm.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(108, 99, 255)));
 
-        EdadForm.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(108, 99, 255)));
+        EdadForm.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(108, 99, 255)));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("REGISTRAR FORMULARIO");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Form.setBackground(new java.awt.Color(108, 99, 255));
+        btn_Form.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_Form.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Form.setText("REGISTRAR FORMULARIO");
+        btn_Form.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btn_Volver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Volver.setBackground(new java.awt.Color(108, 99, 255));
+        btn_Volver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_Volver.setForeground(new java.awt.Color(255, 255, 255));
         btn_Volver.setText("Come Back");
         btn_Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +154,7 @@ public class Formulario extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(btn_Volver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btn_Form)
                 .addGap(53, 53, 53))
         );
         jPanel1Layout.setVerticalGroup(
@@ -180,7 +186,7 @@ public class Formulario extends javax.swing.JFrame {
                         .addComponent(EdadForm, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Form, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Volver, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(20, 20, 20))
         );
@@ -254,8 +260,8 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JTextField EdadForm;
     private javax.swing.JTextField IdForm;
     private javax.swing.JTextField NombreForm;
+    private javax.swing.JButton btn_Form;
     private javax.swing.JButton btn_Volver;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -265,4 +271,60 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+
+private boolean validateFields() {
+    if (NombreForm.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El nombre es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (ContraseñaForm.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "La contraseña es obligatoria", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (IdForm.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El ID es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (CedulaForm.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "La cédula es obligatoria", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (EdadForm.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "La edad es obligatoria", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
 }
+private boolean validarNumerico(String campo, String nombreCampo) {
+    try {
+        Long.parseLong(campo);
+        return true;
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, nombreCampo + " debe contener solo números", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+}
+private boolean validarContraseña() {
+    String contraseña = ContraseñaForm.getText();
+    if (!contraseña.matches(".*\\d.*")) {
+        JOptionPane.showMessageDialog(this, "La contraseña debe contener al menos un número", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
+private void validateAndSubmitForm() {
+    if (!validateFields()) return;
+    if (!validarContraseña()) return;
+    if (!validarNumerico(IdForm.getText(), "ID")) return;
+    if (!validarNumerico(CedulaForm.getText(), "Cédula")) return;
+    if (!validarNumerico(EdadForm.getText(), "Edad")) return;
+    
+    // TODO: Add form submission logic here
+}
+
+
+}
+
+
+
