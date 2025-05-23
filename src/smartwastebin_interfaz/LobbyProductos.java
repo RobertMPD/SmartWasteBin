@@ -10,10 +10,14 @@ import javax.swing.JScrollPane;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.ArrayList;
+
 /**
  *
  * @author Diego Mejia
@@ -41,7 +45,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btn_Limpieza = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btn_proceso = new javax.swing.JButton();
@@ -49,7 +53,7 @@ public class LobbyProductos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_registrarproducto = new javax.swing.JButton();
         btn_VerProductos = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_ElimProducto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,8 +66,8 @@ public class LobbyProductos extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LIMPIEZA");
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton5.setText("APLICAR LIMPIEZA");
+        btn_Limpieza.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_Limpieza.setText("APLICAR LIMPIEZA");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -76,7 +80,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_Limpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -85,7 +89,7 @@ public class LobbyProductos extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addGap(46, 46, 46)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Limpieza, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -164,10 +168,15 @@ public class LobbyProductos extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(108, 99, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("ELIMINAR PRODUCTOS");
+        btn_ElimProducto.setBackground(new java.awt.Color(108, 99, 255));
+        btn_ElimProducto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_ElimProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ElimProducto.setText("ELIMINAR PRODUCTOS");
+        btn_ElimProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ElimProductoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,16 +187,16 @@ public class LobbyProductos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(29, 29, 29))
-                            .addComponent(btn_registrarproducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btn_registrarproducto, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_ElimProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(btn_VerProductos)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -202,9 +211,9 @@ public class LobbyProductos extends javax.swing.JFrame {
                         .addComponent(btn_registrarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(btn_VerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))
+                        .addGap(51, 51, 51)
+                        .addComponent(btn_ElimProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -238,43 +247,99 @@ public class LobbyProductos extends javax.swing.JFrame {
         this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarproductoActionPerformed
 
-    private void btn_VerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerProductosActionPerformed
+    private void btn_ElimProductoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
-            try {
-                // Leer ambos archivos CSV
-                List<String> users = Files.readAllLines(Paths.get("users.csv"));
-                List<String> products = Files.readAllLines(Paths.get("products.csv"));
+            // Mostrar diálogo para ingresar nombre del producto
+            String nombreProducto = JOptionPane.showInputDialog(this, "Ingrese el nombre del producto a eliminar:", "Eliminar Producto", JOptionPane.QUESTION_MESSAGE);
+            
+            if (nombreProducto != null && !nombreProducto.trim().isEmpty()) {
+                // Confirmar eliminación
+                int confirmacion = JOptionPane.showConfirmDialog(this, 
+                    "¿Está seguro que desea eliminar el producto " + nombreProducto + "?", 
+                    "Confirmar Eliminación", 
+                    JOptionPane.YES_NO_OPTION);
                 
-                // Construir el texto a mostrar
-                StringBuilder sb = new StringBuilder();
-                sb.append("=== USUARIOS ===\n");
-                for (String line : users) {
-                    sb.append(line).append("\n");
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    eliminarProducto(nombreProducto.trim());
                 }
-                sb.append("\n=== PRODUCTOS ===\n");
-                for (String line : products) {
-                    sb.append(line).append("\n");
-                }
-                
-                // Crear área de texto con scroll
-                JTextArea textArea = new JTextArea(sb.toString());
-                textArea.setEditable(false);
-                JScrollPane scrollPane = new JScrollPane(textArea);
-                scrollPane.setPreferredSize(new Dimension(500, 400));
-                
-                // Mostrar ventana emergente
-                JOptionPane.showMessageDialog(this, scrollPane, "Datos Registrados", JOptionPane.PLAIN_MESSAGE);
-                
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "Error al leer los archivos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
             }
-        }//GEN-LAST:event_btn_VerProductosActionPerformed
+        }
+
+
+    private void btn_VerProductosActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            // Leer archivos
+            List<String> users = Files.readAllLines(Paths.get("users.csv"));
+            List<String> products = Files.readAllLines(Paths.get("products.csv"));
+            
+            // Crear StringBuilder con formato organizado
+            StringBuilder sb = new StringBuilder();
+            sb.append("=== USUARIOS ===\n");
+            for (String line : users) {
+                String[] parts = line.split(",");
+                if(parts.length >= 3) {
+                    // Muestra ID en campo ID y Nombre en campo Nombre
+                    sb.append(String.format("ID: %-10s Nombre: %s\n", parts[0], parts[1]));
+                }
+            }
+            
+            // Modifica el bloque de productos para eliminar duplicados
+            Set<String> productosUnicos = new LinkedHashSet<>(products);
+            sb.append("\n=== PRODUCTOS ===\n");
+            for (String line : productosUnicos) {
+                String[] parts = line.split(",");
+                if(parts.length >= 3) {
+                    sb.append(String.format("ID: %-10s Nombre: %-20s Tipo: %s\n", 
+                        parts[0], parts[1], parts[2]));
+                }
+            }
+            
+            // Crear área de texto con scroll
+            JTextArea textArea = new JTextArea(sb.toString());
+            textArea.setEditable(false);
+            textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+            JScrollPane scrollPane = new JScrollPane(textArea);
+            scrollPane.setPreferredSize(new Dimension(600, 500));
+            
+            // Mostrar ventana emergente
+            JOptionPane.showMessageDialog(this, scrollPane, "Datos Registrados", JOptionPane.PLAIN_MESSAGE);
+            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer los archivos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }                                                
 
     private void elpepe1ActionPerformed(java.awt.event.ActionEvent evt) {
         Lobby lobby = new Lobby();
         lobby.setVisible(true);
         this.dispose();
     }
+
+    private void eliminarProducto(String nombreProducto) {
+        try {
+            // Leer archivo products.csv
+            List<String> lineas = Files.readAllLines(Paths.get("products.csv"));
+            
+            // Filtrar líneas que no contengan el producto a eliminar
+            List<String> nuevasLineas = new ArrayList<>();
+            for (String linea : lineas) {
+                String[] partes = linea.split(",");
+                if (partes.length >= 2 && !partes[1].equalsIgnoreCase(nombreProducto)) {
+                    nuevasLineas.add(linea);
+                }
+            }
+            
+            // Escribir archivo actualizado
+            Files.write(Paths.get("products.csv"), nuevasLineas);
+            
+            JOptionPane.showMessageDialog(this, "Producto eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el producto", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
 
 
@@ -314,12 +379,12 @@ public class LobbyProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_ElimProducto;
+    private javax.swing.JButton btn_Limpieza;
     private javax.swing.JButton btn_VerProductos;
     private javax.swing.JButton btn_proceso;
     private javax.swing.JButton btn_registrarproducto;
     private javax.swing.JButton elpepe1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -328,3 +393,5 @@ public class LobbyProductos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
+
+
