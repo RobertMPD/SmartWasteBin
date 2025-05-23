@@ -133,7 +133,7 @@ public class AplicarProceso extends javax.swing.JFrame {
         });
 
         Destino.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Destino.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Reparar", "Perdida Total" }));
+        Destino.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Repair", "Total Loss" }));
         Destino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DestinoActionPerformed(evt);

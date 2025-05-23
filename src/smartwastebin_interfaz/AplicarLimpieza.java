@@ -91,7 +91,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
         lblArea.setText("Cleaning Area:");
 
         cmbArea.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cmbArea.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Seleccione un area", "Limpieza Profunda", "Limpieza Exterior", "Limpieza Personalizada" }));
+        cmbArea.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Select an area", "Deep Cleaning", "Exterior Cleaning", "Custom Cleaning" }));
         cmbArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAreaActionPerformed(evt);
@@ -232,8 +232,7 @@ public class AplicarLimpieza extends javax.swing.JFrame {
                                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbArea, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)
-                                    .addComponent(lblArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(lblArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))))
                         .addContainerGap())))
         );
         mainPanelLayout.setVerticalGroup(

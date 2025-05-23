@@ -122,7 +122,6 @@
                                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblArea" alignment="0" min="-2" max="-2147483647" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -263,10 +262,10 @@
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Seleccione un area"/>
-                <StringItem index="1" value="Limpieza Profunda"/>
-                <StringItem index="2" value="Limpieza Exterior"/>
-                <StringItem index="3" value="Limpieza Personalizada"/>
+                <StringItem index="0" value="Select an area"/>
+                <StringItem index="1" value="Deep Cleaning"/>
+                <StringItem index="2" value="Exterior Cleaning"/>
+                <StringItem index="3" value="Custom Cleaning"/>
               </StringArray>
             </Property>
           </Properties>
