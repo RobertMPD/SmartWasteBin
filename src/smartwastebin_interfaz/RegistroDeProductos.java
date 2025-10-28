@@ -248,7 +248,7 @@ public class RegistroDeProductos extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Seleccione el tipo de productos:");
+        jLabel3.setText("Select the type of products:");
 
         Gadgets1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Gadgets1.setLabel("Gadgets");
@@ -263,10 +263,10 @@ public class RegistroDeProductos extends javax.swing.JFrame {
         Organics1.setLabel("Organics");
 
         idLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        idLabel.setText("Ingrese el ID del usuario:");
+        idLabel.setText("Enter the user ID:");
 
         lblDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDescripcion.setText("Descripción:");
+        lblDescripcion.setText("Description:");
 
         Descripcion.setColumns(20);
         Descripcion.setRows(5);
@@ -275,14 +275,14 @@ public class RegistroDeProductos extends javax.swing.JFrame {
         txtBuscarID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(108, 99, 255)));
 
         idLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        idLabel1.setText("Nombre Especifico del producto:");
+        idLabel1.setText("Specific Name of the product:");
 
         txtNombreEspecifico.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(108, 99, 255)));
 
         btn_enviar.setBackground(new java.awt.Color(108, 99, 255));
         btn_enviar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_enviar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_enviar.setText("Enviar");
+        btn_enviar.setText("Send");
         btn_enviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_enviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,7 +425,7 @@ public class RegistroDeProductos extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al guardar datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btn_enviarActionPerformed
+    }                                          
 
     private void txtProcesoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtProcesoActionPerformed
         // TODO add your handling code here:

@@ -238,7 +238,7 @@ public class Register extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registerActionPerformed
+    private void bt_registerActionPerformed(java.awt.event.ActionEvent evt) {
         String name = text_name.getText();
         String lastName = text_LastName.getText();
         String pass = new String(text_pass.getText());
@@ -246,14 +246,14 @@ public class Register extends javax.swing.JFrame {
 
         //sea un numero valido
         if (!idUser.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "User ID must be a valid number!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El ID debe ser un número válido!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         if (!name.isEmpty() && !lastName.isEmpty() && !pass.isEmpty() && !idUser.isEmpty()) {
             User newUser = new User(idUser, name, lastName, pass);
-            if (idUser.length() != 8 && idUser.length() != 10) {
-                JOptionPane.showMessageDialog(this, "The number must be greater than 8 or less than 10.");
+            if (!idUser.matches("^[1-9]\\d{7}$")) {  // Cambiado para validar 8 dígitos del 1-9
+                JOptionPane.showMessageDialog(this, "El ID debe tener exactamente 8 dígitos (1-9).");
             } else {
                 if (userManager.register(newUser)) {
                     JOptionPane.showMessageDialog(this, "User successfully registered.");
